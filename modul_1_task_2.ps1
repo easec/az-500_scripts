@@ -1,14 +1,16 @@
-$Email = Read-Host "Skriv in e-post för testkonto"
+
 Connect-AzureAD
+$Email = Read-Host "Skriv in e-post för testkonto"
+
 $userpassword = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
 $userpassword.Password = "Pa55w.rd1234"
 
-Connect-AzureAD
+
 $domainName = ((Get-AzureAdTenantDetail).VerifiedDomains)[0].Name
-Connect-AzureAD
+
 New-AzureADUser -DisplayName 'Marcus Rosenberg' -GivenName 'Marcus' -Surname 'Rosenberg' -PasswordProfile $userpassword -UserPrincipalName "MarcusR@$domainName" -AccountEnabled $true -MailNickName 'Marcus'
 New-AzureADUser -DisplayName 'Viking Johannesson' -GivenName 'Viking' -Surname 'Johannesson' -PasswordProfile $userpassword -UserPrincipalName "VikingJ@$domainName" -OtherMails $Email -AccountEnabled $true -MailNickName 'Viking'
-Connect-AzureAD
+
 
 New-AzureADGroup -Description "AZ500Admins" -DisplayName "AZ500Admins" -MailEnabled $false -SecurityEnabled $true -MailNickName "AZ500Admins"
 
