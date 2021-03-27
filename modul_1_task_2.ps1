@@ -1,7 +1,7 @@
 $Email = Read-Host "Skriv in e-post för testkonto"
 Connect-AzureAD
 $userpassword = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
-$passwordProfile.Password = "Pa55w.rd1234"
+$userpassword.Password = "Pa55w.rd1234"
 
 
 $domainName = ((Get-AzureAdTenantDetail).VerifiedDomains)[0].Name
