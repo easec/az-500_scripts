@@ -3,6 +3,7 @@ Connect-AzureAD
 $passwordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
 $passwordProfile.Password = 'Pa55w.rd1234'
 
+
 $domainName = ((Get-AzureAdTenantDetail).VerifiedDomains)[0].Name
 
 New-AzureADUser -DisplayName 'Marcus Rosenberg' -GivenName 'Marcus' -Surname 'Rosenberg' -PasswordProfile $passwordProfile -UserPrincipalName "MarcusR@$domainName" -AccountEnabled $true -MailNickName 'Marcus'
